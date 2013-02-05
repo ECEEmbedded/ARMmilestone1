@@ -11,6 +11,8 @@
 #include "vtUtilities.h"
 #include "LCDtask.h"
 #include "string.h"
+// Added the myDefs.h include here by Matthew Ibarra 2/4/2013
+#include "myDefs.h"
 
 // I have set this to a larger stack size because of (a) using printf() and (b) the depth of function calls
 //   for some of the LCD operations
@@ -31,13 +33,9 @@
 #define LCDMsgTypeTimer 1
 // a message to be printed
 #define LCDMsgTypePrint 2
-// actual data structure that is sent in a message
-typedef struct __vtLCDMsg {
-	uint8_t msgType;
-	uint8_t	length;	 // Length of the message to be printed
-	uint8_t buf[vtLCDMaxLen+1]; // On the way in, message to be sent, on the way out, message received (if any)
-} vtLCDMsg;
-// end of defs
+
+// Added by Matthew Ibarra for ADC LCD Task Message 2/4/2013
+#define LCDMsgTypeADC 3
 
 /* definition for the LCD task. */
 static portTASK_FUNCTION_PROTO( vLCDUpdateTask, pvParameters );
@@ -92,6 +90,22 @@ portBASE_TYPE SendLCDPrintMsg(vtLCDStruct *lcdData,int length,char *pString,port
 	lcdBuffer.msgType = LCDMsgTypePrint;
 	strncpy((char *)lcdBuffer.buf,pString,vtLCDMaxLen);
 	return(xQueueSend(lcdData->inQ,(void *) (&lcdBuffer),ticksToBlock));
+}
+
+// Added by Matthew Ibarra 2/4/2013
+portBASE_TYPE SendLCDADCMsg(vtLCDStruct *lcdData, int data, portTickType ticksToBlock)
+{
+	if(lcdData == NULL) {
+		VT_HANDLE_FATAL_ERROR(0);
+	}
+
+	vtLCDMsg lcdBuffer;
+
+	lcdBuffer.length = sizeof(data);
+	lcdBuffer.msgType = LCDMsgTypeADC;
+	lcdBuffer.buf[0] = (uint8_t) data;
+	lcdBuffer.buf[1] = (uint8_t)(data>>8);
+	return(xQueueSend(lcdData->inQ, (void *) (&lcdBuffer), ticksToBlock));
 }
 
 // Private routines used to unpack the message buffers
@@ -186,6 +200,9 @@ static portTASK_FUNCTION( vLCDUpdateTask, pvParameters )
 	GLCD_SetTextColor(tscr);
 	GLCD_SetBackColor(screenColor);
 	GLCD_Clear(screenColor);
+
+	// Added by Matthew Ibarra 2/2/2013
+	int xPos = 0;
 
 	// Note that srand() & rand() require the use of malloc() and should not be used unless you are using
 	//   MALLOC_VERSION==1
@@ -340,6 +357,33 @@ static portTASK_FUNCTION( vLCDUpdateTask, pvParameters )
 			break;
 		}
 		} // end of switch()
+
+		#if MILESTONE_1==1
+		// Added by Matthew Ibarra 2/2/2013
+			if(timerCount==0) {
+				int i;
+				for(i = 320/6; i < 315; i = i + 320/6) {
+					// Stuff
+					GLCD_ClearWindow(i, 0, 1, 240, Red);
+				}
+				for(i = 240/4; i < 235; i = i + 240/4) {
+					// Stuff
+					GLCD_ClearWindow(0, i, 320, 1, Red);
+				}
+				GLCD_DisplayString(29, 0, 0, (unsigned char*) "V/div=2.5 s/div=3");
+				timerCount++;
+			}
+			int adcValue;
+			getMsgValue(&adcValue, &msgBuffer);
+			int displayValue;
+			displayValue = 120 - (adcValue * 120)/(0x100);
+			GLCD_ClearWindow(xPos, displayValue, 2, 2, Black);
+			xPos += 2;
+			if(xPos > 320) {
+				timerCount = 0;
+				xPos = 0;
+			}
+		#endif
 
 		// Here is a way to do debugging output via the built-in hardware -- it requires the ULINK cable and the
 		//   debugger in the Keil tools to be connected.  You can view PORT0 output in the "Debug(printf) Viewer"

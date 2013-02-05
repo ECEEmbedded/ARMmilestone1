@@ -1,5 +1,5 @@
 #include "myDefs.h"
-#if EXAMPLE_COLOR_CHANGE==1
+#if MILESTONE_1==1
 // The above include and if statements were
 // added by Matthew Ibarra 2/2/2013
 #include <stdlib.h>
@@ -102,10 +102,11 @@ int getMsgType(vtTempMsg *Buffer)
 {
 	return(Buffer->msgType);
 }
-uint8_t getValue(vtTempMsg *Buffer)
+
+// The below getValue function was changed by Matthew Ibarra on 2/2/2013
+void getValue(int *target, vtTempMsg *msgBuffer)
 {
-	uint8_t *ptr = (uint8_t *) Buffer->buf;
-	return(*ptr);
+	*(target) = (int) msgBuffer->buf[0];
 }
 
 // I2C commands for the temperature sensor
@@ -120,22 +121,32 @@ uint8_t getValue(vtTempMsg *Buffer)
 // Definitions of the states for the FSM below
 const uint8_t fsmStateInit1Sent = 0;
 const uint8_t fsmStateInit2Sent = 1;
-const uint8_t fsmStateTempRead1 = 2;
-const uint8_t fsmStateTempRead2 = 3;
-const uint8_t fsmStateTempRead3 = 4;
+
+// This FSM const was changed by Matthew Ibarra 2/4/2013
+const uint8_t fsmStateADCRead = 2;
+
+// These below two statements were removed by Matthew Ibarra 2/2/2013
+//const uint8_t fsmStateTempRead2 = 3;
+//const uint8_t fsmStateTempRead3 = 4;
+
 // This is the actual task that is run
 static portTASK_FUNCTION( vi2cTempUpdateTask, pvParameters )
 {
-	float temperature = 0.0;
-	float countPerC = 100.0, countRemain=0.0;
+	// These two floats were rmoved by Matthew Ibarra 2/2/2013
+	//float temperature = 0.0;
+	//float countPerC = 100.0, countRemain=0.0;
+
 	// Get the parameters
 	vtTempStruct *param = (vtTempStruct *) pvParameters;
 	// Get the I2C device pointer
 	vtI2CStruct *devPtr = param->dev;
 	// Get the LCD information pointer
 	vtLCDStruct *lcdData = param->lcdData;
-	// String buffer for printing
-	char lcdBuffer[vtLCDMaxLen+1];
+	
+	// These two statements below were commented out by Matthew Ibarra 2/2/2013
+	//// String buffer for printing
+	//char lcdBuffer[vtLCDMaxLen+1];
+
 	// Buffer for receiving messages
 	vtTempMsg msgBuffer;
 	uint8_t currentState;
@@ -150,6 +161,7 @@ static portTASK_FUNCTION( vi2cTempUpdateTask, pvParameters )
 		VT_HANDLE_FATAL_ERROR(0);
 	}
 	currentState = fsmStateInit1Sent;
+
 	// Like all good tasks, this should never exit
 	for(;;)
 	{
@@ -157,8 +169,7 @@ static portTASK_FUNCTION( vi2cTempUpdateTask, pvParameters )
 		if (xQueueReceive(param->inQ,(void *) &msgBuffer,portMAX_DELAY) != pdTRUE) {
 			VT_HANDLE_FATAL_ERROR(0);
 		}
-#if EXAMPLE_COLOR_CHANGE==1
-// The above #if was added by Matthew Ibarra 2/2/2013
+
 		// Now, based on the type of the message and the state, we decide on the new state and action to take
 		switch(getMsgType(&msgBuffer)) {
 		case vtI2CMsgTypeTempInit: {
@@ -171,7 +182,7 @@ static portTASK_FUNCTION( vi2cTempUpdateTask, pvParameters )
 					VT_HANDLE_FATAL_ERROR(0);
 				}
 			} else 	if (currentState == fsmStateInit2Sent) {
-				currentState = fsmStateTempRead1;
+				currentState = fsmStateADCRead;
 			} else {
 				// unexpectedly received this message
 				VT_HANDLE_FATAL_ERROR(0);
@@ -179,73 +190,22 @@ static portTASK_FUNCTION( vi2cTempUpdateTask, pvParameters )
 			break;
 		}
 		case TempMsgTypeTimer: {
-			// Timer messages never change the state, they just cause an action (or not) 
-			if ((currentState != fsmStateInit1Sent) && (currentState != fsmStateInit2Sent)) {
-				// Read in the values from the temperature sensor
-				// We have three transactions on i2c to read the full temperature 
-				//   we send all three requests to the I2C thread (via a Queue) -- responses come back through the conductor thread
-				// Temperature read -- use a convenient routine defined above
-				if (vtI2CEnQ(devPtr,vtI2CMsgTypeTempRead1,0x4F,sizeof(i2cCmdReadVals),i2cCmdReadVals,2) != pdTRUE) {
-					VT_HANDLE_FATAL_ERROR(0);
-				}
-				// Read in the read counter
-				if (vtI2CEnQ(devPtr,vtI2CMsgTypeTempRead2,0x4F,sizeof(i2cCmdReadCnt),i2cCmdReadCnt,1) != pdTRUE) {
-					VT_HANDLE_FATAL_ERROR(0);
-				}
-				// Read in the slope;
-				if (vtI2CEnQ(devPtr,vtI2CMsgTypeTempRead3,0x4F,sizeof(i2cCmdReadSlope),i2cCmdReadSlope,1) != pdTRUE) {
-					VT_HANDLE_FATAL_ERROR(0);
-				}
-			} else {
-				// just ignore timer messages until initialization is complete
-			} 
+			if (vtI2CEnQ(devPtr,vtI2CMsgTypeTempRead1,0x4F,sizeof(i2cCmdReadVals),i2cCmdReadVals,2) != pdTRUE) {
+				VT_HANDLE_FATAL_ERROR(0);
+			}
 			break;
 		}
 		case vtI2CMsgTypeTempRead1: {
-			if (currentState == fsmStateTempRead1) {
-				currentState = fsmStateTempRead2;
-				temperature = getValue(&msgBuffer);
-			} else {
-				// unexpectedly received this message
-				VT_HANDLE_FATAL_ERROR(0);
-			}
-			break;
-		}
-		case vtI2CMsgTypeTempRead2: {
-			if (currentState == fsmStateTempRead2) {
-				currentState = fsmStateTempRead3;
-				countRemain = getValue(&msgBuffer);
-			} else {
-				// unexpectedly received this message
-				VT_HANDLE_FATAL_ERROR(0);
-			}
-			break;
-		}
-		case vtI2CMsgTypeTempRead3: {
-			if (currentState == fsmStateTempRead3) {
-				currentState = fsmStateTempRead1;
-				countPerC = getValue(&msgBuffer);
-
-				// Now have all of the values, so compute the temperature and send to the LCD Task
-				// Do the accurate temperature calculation
-				temperature += -0.25 + ((countPerC-countRemain)/countPerC);
-
-				#if PRINTF_VERSION == 1
-				printf("Temp %f F (%f C)\n",(32.0 + ((9.0/5.0)*temperature)), (temperature));
-				sprintf(lcdBuffer,"T=%6.2fF (%6.2fC)",(32.0 + ((9.0/5.0)*temperature)),temperature);
-				#else
-				// we do not have full printf (so no %f) and therefore need to print out integers
-				printf("Temp %d F (%d C)\n",lrint(32.0 + ((9.0/5.0)*temperature)), lrint(temperature));
-				sprintf(lcdBuffer,"T=%d F (%d C)",lrint(32.0 + ((9.0/5.0)*temperature)),lrint(temperature));
-				#endif
-				if (lcdData != NULL) {
-					if (SendLCDPrintMsg(lcdData,strnlen(lcdBuffer,vtLCDMaxLen),lcdBuffer,portMAX_DELAY) != pdTRUE) {
+			// Timer messages never change the state, they just cause an action (or not) 
+			if ((currentState != fsmStateInit1Sent) && (currentState != fsmStateInit2Sent)) {
+				// Read value from ADC and send to LCD thread
+				int value;
+				getValue(&value, &msgBuffer);
+					if(SendLCDADCMsg(lcdData,value,portMAX_DELAY) != pdTRUE) {
 						VT_HANDLE_FATAL_ERROR(0);
 					}
-				}
 			} else {
-				// unexpectedly received this message
-				VT_HANDLE_FATAL_ERROR(0);
+				// Just ignore timer messages until initialization is complete
 			}
 			break;
 		}
@@ -254,13 +214,6 @@ static portTASK_FUNCTION( vi2cTempUpdateTask, pvParameters )
 			break;
 		}
 		}
-#endif
-#if MILESTONE_1==1
-	if(SendLCDADCMsg(lcdData, 0x110, portMAX_DELAY) != pdTRUE) {
-		VT_HANDLE_FATAL_ERROR(0);
-	}
-#endif
-
 	}
 }
 

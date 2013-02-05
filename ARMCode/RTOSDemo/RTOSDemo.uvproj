@@ -607,6 +607,36 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>milestone1</GroupName>
+          <Files>
+            <File>
+              <FileName>myDefs.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\MainFiles\myDefs.h</FilePath>
+            </File>
+            <File>
+              <FileName>I2CTaskMsgTypes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\MainFiles\I2CTaskMsgTypes.h</FilePath>
+            </File>
+            <File>
+              <FileName>i2cTemp_milestone1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MainFiles/i2cTemp_milestone1.c</FilePath>
+            </File>
+            <File>
+              <FileName>myADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MainFiles/myADC.c</FilePath>
+            </File>
+            <File>
+              <FileName>myTimers_milestone1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MainFiles/myTimers_milestone1.c</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>

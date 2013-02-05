@@ -1,5 +1,6 @@
 #ifndef LCD_TASK_H
 #define LCD_TASK_H
+#include "FreeRTOS.h"
 #include "queue.h"
 #include "timers.h"
 
@@ -15,9 +16,22 @@ typedef struct __vtLCDStruct {
 	xQueueHandle inQ;					   	// Queue used to send messages from other tasks to the LCD task to print
 } vtLCDStruct;
 
+// Added by Matthew Ibarra 2/2/2013
+// This defines the width and height of the LCD screen
+#define WIDTH 320;
+#define HEIGHT 240;
+
 // Structure used to define the messages that are sent to the LCD thread
 //   the maximum length of a message to be printed is the size of the "buf" field below
 #define vtLCDMaxLen 20
+
+// actual data structure that is sent in a message
+typedef struct __vtLCDMsg {
+	uint8_t msgType;
+	uint8_t	length;	 // Length of the message to be printed
+	uint8_t buf[vtLCDMaxLen+1]; // On the way in, message to be sent, on the way out, message received (if any)
+} vtLCDMsg;
+// end of defs
 
 /* ********************************************************************* */
 // The following are the public API calls that other tasks should use to work with the LCD task
@@ -47,6 +61,15 @@ portBASE_TYPE SendLCDTimerMsg(vtLCDStruct *lcdData,portTickType ticksElapsed,por
 // Return:
 //   Result of the call to xQueueSend()
 portBASE_TYPE SendLCDPrintMsg(vtLCDStruct *lcdData,int length,char *pString,portTickType ticksToBlock);
+
+// Send an integer message to the LCD task for it to output to the LCD screen as a point in the waveform
+// Args:
+//	 lcdData -- a pointer to a variable of type vtLCDStruct
+//	 data -- the integer value that will be plotted
+//	 ticksToBlock -- how long the routine should wait if the queue is full
+// Return:
+//	 Result of the call to xQueueSend()
+portBASE_TYPE SendLCDADCMsg(vtLCDStruct *lcdData,int data,portTickType ticksToBlock);
 /* ********************************************************************* */
 
 

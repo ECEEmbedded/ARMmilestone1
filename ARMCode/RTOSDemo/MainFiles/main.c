@@ -237,7 +237,9 @@ int main( void )
 	// LCD Task creates a queue to receive messages -- what it does with those messages will depend on how the task is configured (see LCDtask.c)
 	// Here we set up a timer that will send messages to the LCD task.  You don't have to have this timer for the LCD task, it is just showing
 	//  how to use a timer and how to send messages from that timer.
-	startTimerForLCD(&vtLCDdata);
+
+		//Commented out by Matthew Ibarra 2/2/2013
+		//startTimerForLCD(&vtLCDdata);
 	#endif
 	
 	#if USE_MTJ_V4Temp_Sensor == 1

@@ -159,7 +159,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>UL2CM3</Key>
-          <Name>-UM0515BUE -O974 -S8 -C0 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO3 -TC100000000 -TP21 -TDS804F -TDT0 -TDC10 -TIE1 -TIP0 -FO23 -FD10000000 -FC800 -FN1 -FF0LPC_IAP_512 -FS00 -FL080000</Name>
+          <Name>-UM0521MBE -O974 -S8 -C0 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO3 -TC100000000 -TP21 -TDS804F -TDT0 -TDC10 -TIE1 -TIP0 -FO23 -FD10000000 -FC800 -FN1 -FF0LPC_IAP_512 -FS00 -FL080000</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
       <MemoryWindow1>
@@ -311,8 +311,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>97</TopLine>
-      <CurrentLine>97</CurrentLine>
+      <TopLine>199</TopLine>
+      <CurrentLine>203</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\MainFiles/main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -323,10 +323,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>10</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>67</TopLine>
+      <CurrentLine>67</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\MainFiles/i2cTemp.c</PathWithFileName>
       <FilenameWithoutPath>i2cTemp.c</FilenameWithoutPath>
@@ -339,8 +339,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>101</TopLine>
+      <CurrentLine>101</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>../vtCode/vtUtilities.c</PathWithFileName>
       <FilenameWithoutPath>vtUtilities.c</FilenameWithoutPath>
@@ -365,10 +365,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>33</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>376</TopLine>
+      <CurrentLine>387</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\MainFiles/LCDtask.c</PathWithFileName>
       <FilenameWithoutPath>LCDtask.c</FilenameWithoutPath>
@@ -379,10 +379,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>21</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>4</TopLine>
+      <CurrentLine>15</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\MainFiles/myTimers.c</PathWithFileName>
       <FilenameWithoutPath>myTimers.c</FilenameWithoutPath>
@@ -393,10 +393,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>28</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>45</TopLine>
+      <CurrentLine>56</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\MainFiles/conductor.c</PathWithFileName>
       <FilenameWithoutPath>conductor.c</FilenameWithoutPath>
@@ -956,6 +956,265 @@
     </File>
   </Group>
 
+  <Group>
+    <GroupName>milestone1</GroupName>
+    <tvExp>1</tvExp>
+    <tvExpOptDlg>0</tvExpOptDlg>
+    <cbSel>0</cbSel>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>49</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\MainFiles\myDefs.h</PathWithFileName>
+      <FilenameWithoutPath>myDefs.h</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>50</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\MainFiles\I2CTaskMsgTypes.h</PathWithFileName>
+      <FilenameWithoutPath>I2CTaskMsgTypes.h</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>51</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>6</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>182</TopLine>
+      <CurrentLine>182</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\MainFiles/i2cTemp_milestone1.c</PathWithFileName>
+      <FilenameWithoutPath>i2cTemp_milestone1.c</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>52</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>1</TopLine>
+      <CurrentLine>3</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\MainFiles/myADC.c</PathWithFileName>
+      <FilenameWithoutPath>myADC.c</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>53</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\MainFiles/myTimers_milestone1.c</PathWithFileName>
+      <FilenameWithoutPath>myTimers_milestone1.c</FilenameWithoutPath>
+    </File>
+  </Group>
+
+  <AlienFiles>
+    <PathWithFilename>C:\ARMCode\RTOSDemo\MainFiles\myTimers.h</PathWithFilename>
+    <TopLine>1</TopLine>
+    <CurrentLine>3</CurrentLine>
+    <Constant>0</Constant>
+    <WindowPosition>
+      <length>0</length>
+      <flags>0</flags>
+      <showCmd>0</showCmd>
+      <MinPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>0</Top>
+        <Left>0</Left>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+  </AlienFiles>
+
+  <AlienFiles>
+    <PathWithFilename>C:\ARMCode\RTOSDemo\MAINFILES\CONDUCTOR.H</PathWithFilename>
+    <TopLine>1</TopLine>
+    <CurrentLine>23</CurrentLine>
+    <Constant>0</Constant>
+    <WindowPosition>
+      <length>0</length>
+      <flags>0</flags>
+      <showCmd>0</showCmd>
+      <MinPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>0</Top>
+        <Left>0</Left>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+  </AlienFiles>
+
+  <AlienFiles>
+    <PathWithFilename>C:\ARMCode\FREERTOS\SOURCE\INCLUDE\QUEUE.H</PathWithFilename>
+    <TopLine>54</TopLine>
+    <CurrentLine>65</CurrentLine>
+    <Constant>0</Constant>
+    <WindowPosition>
+      <length>0</length>
+      <flags>0</flags>
+      <showCmd>0</showCmd>
+      <MinPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>0</Top>
+        <Left>0</Left>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+  </AlienFiles>
+
+  <AlienFiles>
+    <PathWithFilename>C:\ARMCode\RTOSDemo\MAINFILES\MYADC.H</PathWithFilename>
+    <TopLine>1</TopLine>
+    <CurrentLine>4</CurrentLine>
+    <Constant>0</Constant>
+    <WindowPosition>
+      <length>0</length>
+      <flags>0</flags>
+      <showCmd>0</showCmd>
+      <MinPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>0</Top>
+        <Left>0</Left>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+  </AlienFiles>
+
+  <AlienFiles>
+    <PathWithFilename>C:\ARMCode\RTOSDemo\MAINFILES\LCDTASK.H</PathWithFilename>
+    <TopLine>16</TopLine>
+    <CurrentLine>16</CurrentLine>
+    <Constant>0</Constant>
+    <WindowPosition>
+      <length>0</length>
+      <flags>0</flags>
+      <showCmd>0</showCmd>
+      <MinPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>0</Top>
+        <Left>0</Left>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+  </AlienFiles>
+
+  <AlienFiles>
+    <PathWithFilename>C:\ARMCode\FREERTOS\SOURCE\INCLUDE\TASK.H</PathWithFilename>
+    <TopLine>54</TopLine>
+    <CurrentLine>65</CurrentLine>
+    <Constant>0</Constant>
+    <WindowPosition>
+      <length>0</length>
+      <flags>0</flags>
+      <showCmd>0</showCmd>
+      <MinPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>0</Top>
+        <Left>0</Left>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+  </AlienFiles>
+
+  <AlienFiles>
+    <PathWithFilename>C:\ARMCODE\FREERTOS\SOURCE\INCLUDE\PORTABLE.H</PathWithFilename>
+    <TopLine>346</TopLine>
+    <CurrentLine>355</CurrentLine>
+    <Constant>0</Constant>
+    <WindowPosition>
+      <length>0</length>
+      <flags>0</flags>
+      <showCmd>0</showCmd>
+      <MinPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>0</Top>
+        <Left>0</Left>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+  </AlienFiles>
+
   <MDIGroups>
     <Orientation>1</Orientation>
     <ActiveMDIGroup>0</ActiveMDIGroup>
@@ -964,10 +1223,112 @@
       <ActiveTab>0</ActiveTab>
       <Documents>
         <Doc>
+          <Name>../vtCode/vtUtilities.c</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>101</TopLine>
+          <CurrentLine>101</CurrentLine>
+        </Doc>
+        <Doc>
           <Name>.\MainFiles/main.c</Name>
           <ColumnNumber>0</ColumnNumber>
-          <TopLine>97</TopLine>
-          <CurrentLine>97</CurrentLine>
+          <TopLine>199</TopLine>
+          <CurrentLine>203</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\MainFiles/LCDtask.c</Name>
+          <ColumnNumber>33</ColumnNumber>
+          <TopLine>376</TopLine>
+          <CurrentLine>387</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>C:\ARMCODE\FREERTOS\SOURCE\INCLUDE\PORTABLE.H</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>346</TopLine>
+          <CurrentLine>355</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>C:\ARMCode\FREERTOS\SOURCE\INCLUDE\TASK.H</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>54</TopLine>
+          <CurrentLine>65</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>C:\ARMCode\RTOSDemo\MAINFILES\LCDTASK.H</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>16</TopLine>
+          <CurrentLine>16</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\MainFiles/myTimers_milestone1.c</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>1</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>C:\ARMCode\RTOSDemo\MAINFILES\MYADC.H</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>4</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\MainFiles/myADC.c</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>3</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\MainFiles/i2cTemp_milestone1.c</Name>
+          <ColumnNumber>6</ColumnNumber>
+          <TopLine>182</TopLine>
+          <CurrentLine>182</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>C:\ARMCode\FREERTOS\SOURCE\INCLUDE\QUEUE.H</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>54</TopLine>
+          <CurrentLine>65</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>C:\ARMCode\RTOSDemo\MAINFILES\I2CTASKMSGTYPES.H</Name>
+          <ColumnNumber>31</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>13</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\MainFiles/i2cTemp.c</Name>
+          <ColumnNumber>10</ColumnNumber>
+          <TopLine>67</TopLine>
+          <CurrentLine>67</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\MainFiles/myTimers.c</Name>
+          <ColumnNumber>21</ColumnNumber>
+          <TopLine>4</TopLine>
+          <CurrentLine>15</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>C:\ARMCode\RTOSDemo\MAINFILES\CONDUCTOR.H</Name>
+          <ColumnNumber>141</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>23</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>C:\ARMCode\RTOSDemo\MainFiles\myTimers.h</Name>
+          <ColumnNumber>14</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>3</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\MainFiles/conductor.c</Name>
+          <ColumnNumber>28</ColumnNumber>
+          <TopLine>45</TopLine>
+          <CurrentLine>56</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>C:\ARMCode\RTOSDemo\MAINFILES\MYDEFS.H</Name>
+          <ColumnNumber>19</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>9</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>
