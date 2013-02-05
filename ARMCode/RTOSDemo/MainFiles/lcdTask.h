@@ -1,3 +1,5 @@
+#include "myDefs.h"
+#if MILESTONE_1==1
 #ifndef LCD_TASK_H
 #define LCD_TASK_H
 #include "FreeRTOS.h"
@@ -75,4 +77,5 @@ portBASE_TYPE SendLCDADCMsg(vtLCDStruct *lcdData,int data,portTickType ticksToBl
 
 void LCDTimerCallback(xTimerHandle);
 
+#endif
 #endif

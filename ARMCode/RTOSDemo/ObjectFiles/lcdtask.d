@@ -1,4 +1,4 @@
-ObjectFiles/lcdtask.o: MainFiles/LCDtask.c \
+ObjectFiles/lcdtask.o: MainFiles/LCDtask.c MainFiles/myDefs.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/stdlib.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/machine/ieeefp.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/_ansi.h \
@@ -36,5 +36,4 @@ ObjectFiles/lcdtask.o: MainFiles/LCDtask.c \
  MainFiles/LCDtask.h ../FreeRTOS/Source/include/queue.h \
  ../FreeRTOS/Source/include/timers.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/string.h \
- c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/sys/string.h \
- MainFiles/myDefs.h
+ c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/sys/string.h

@@ -1,5 +1,5 @@
 // The include statement and the pound include statement for
-// EXAMPLE_COLOR_CHANGE statement below added by 
+// Example Color Change statement below added by 
 // Matthew Ibarra 2/2/2013
 #include "myDefs.h"
 #if EXAMPLE_COLOR_CHANGE==1
@@ -44,7 +44,6 @@ void LCDTimerCallback(xTimerHandle pxTimer)
 			// Here is where you would do something if you wanted to handle the queue being full
 			VT_HANDLE_FATAL_ERROR(0);
 		}
-	}
 	#endif
 	#if MILESTONE_1==1
 	// Added by Matthew Ibarra 2/2/2013

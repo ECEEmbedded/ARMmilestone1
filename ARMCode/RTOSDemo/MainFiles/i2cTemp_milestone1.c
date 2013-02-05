@@ -111,7 +111,7 @@ void getValue(int *target, vtTempMsg *msgBuffer)
 
 // I2C commands for the temperature sensor
 	const uint8_t i2cCmdInit[]= {0xAC,0x00};
-	const uint8_t i2cCmdStartConvert[]= {0xEE};
+	const uint8_t i2cCmdStartConvert[]= {0xEE};											   
 	const uint8_t i2cCmdStopConvert[]= {0x22};
 	const uint8_t i2cCmdReadVals[]= {0xAA};
 	const uint8_t i2cCmdReadCnt[]= {0xA8};
@@ -121,7 +121,6 @@ void getValue(int *target, vtTempMsg *msgBuffer)
 // Definitions of the states for the FSM below
 const uint8_t fsmStateInit1Sent = 0;
 const uint8_t fsmStateInit2Sent = 1;
-
 // This FSM const was changed by Matthew Ibarra 2/4/2013
 const uint8_t fsmStateADCRead = 2;
 
@@ -199,7 +198,7 @@ static portTASK_FUNCTION( vi2cTempUpdateTask, pvParameters )
 			// Timer messages never change the state, they just cause an action (or not) 
 			if ((currentState != fsmStateInit1Sent) && (currentState != fsmStateInit2Sent)) {
 				// Read value from ADC and send to LCD thread
-				int value;
+				int value = -1;
 				getValue(&value, &msgBuffer);
 					if(SendLCDADCMsg(lcdData,value,portMAX_DELAY) != pdTRUE) {
 						VT_HANDLE_FATAL_ERROR(0);

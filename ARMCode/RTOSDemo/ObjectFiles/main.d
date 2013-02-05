@@ -1,4 +1,4 @@
-ObjectFiles/main.o: MainFiles/main.c \
+ObjectFiles/main.o: MainFiles/main.c MainFiles/myDefs.h \
  ../FreeRTOS/Source/include/FreeRTOS.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/include/stddef.h \
  ../FreeRTOS/Source/include/projdefs.h ../SystemFiles/FreeRTOSConfig.h \

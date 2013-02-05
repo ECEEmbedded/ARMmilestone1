@@ -1,3 +1,5 @@
+#include "myDefs.h"
+#if MILESTONE_1==1
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -195,8 +197,8 @@ static portTASK_FUNCTION( vLCDUpdateTask, pvParameters )
 
 	/* Initialize the LCD and set the initial colors */
 	GLCD_Init();
-	tscr = Green; // may be reset in the LCDMsgTypeTimer code below
-	screenColor = Red; // may be reset in the LCDMsgTypeTimer code below
+	tscr = Red; // may be reset in the LCDMsgTypeTimer code below
+	screenColor = White; // may be reset in the LCDMsgTypeTimer code below
 	GLCD_SetTextColor(tscr);
 	GLCD_SetBackColor(screenColor);
 	GLCD_Clear(screenColor);
@@ -230,6 +232,8 @@ static portTASK_FUNCTION( vLCDUpdateTask, pvParameters )
 			VT_HANDLE_FATAL_ERROR(0);
 		}
 		
+
+		#if EXAMPLE_COLOR_CHANGE==1
 		//Log that we are processing a message -- more explanation of logging is given later on
 		vtITMu8(vtITMPortLCDMsg,getMsgType(&msgBuffer));
 		vtITMu8(vtITMPortLCDMsg,getMsgLength(&msgBuffer));
@@ -357,19 +361,24 @@ static portTASK_FUNCTION( vLCDUpdateTask, pvParameters )
 			break;
 		}
 		} // end of switch()
-
+		#endif
 		#if MILESTONE_1==1
 		// Added by Matthew Ibarra 2/2/2013
 			if(timerCount==0) {
+				GLCD_Clear(screenColor);
+				
+				// Draw the vertical gridlines onto the LCD
 				int i;
 				for(i = 320/6; i < 315; i = i + 320/6) {
-					// Stuff
 					GLCD_ClearWindow(i, 0, 1, 240, Red);
 				}
+				
+				// Draw the vertical gridlines onto the LCD
 				for(i = 240/4; i < 235; i = i + 240/4) {
-					// Stuff
 					GLCD_ClearWindow(0, i, 320, 1, Red);
 				}
+				
+				//Output Scale on LCD
 				GLCD_DisplayString(29, 0, 0, (unsigned char*) "V/div=2.5 s/div=3");
 				timerCount++;
 			}
@@ -474,3 +483,4 @@ static unsigned short hsl2rgb(float H,float S,float L)
 	unsigned short color = (red << 11) | (green << 5) | blue;
 	return(color); 
 }
+#endif

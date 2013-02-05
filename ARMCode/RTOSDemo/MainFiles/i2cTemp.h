@@ -1,3 +1,5 @@
+#include "myDefs.h"
+#if MILESTONE_1==1
 #ifndef I2CTEMP_TASK_H
 #define I2CTEMP_TASK_H
 #include "vtI2C.h"
@@ -40,4 +42,5 @@ portBASE_TYPE SendTempTimerMsg(vtTempStruct *tempData,portTickType ticksElapsed,
 // Return:
 //   Result of the call to xQueueSend()
 portBASE_TYPE SendTempValueMsg(vtTempStruct *tempData,uint8_t msgType,uint8_t value,portTickType ticksToBlock);
+#endif
 #endif

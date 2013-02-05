@@ -74,6 +74,9 @@
  * is 1 and 'A' is received then 'B' will be sent back).  A dumb terminal such
  * as Hyperterminal can be used to talk to the USB task.
  */
+ 
+ #include "myDefs.h"
+ #if MILESTONE_1==1
 
 /* Scheduler includes. */
 #include "FreeRTOS.h"
@@ -238,8 +241,8 @@ int main( void )
 	// Here we set up a timer that will send messages to the LCD task.  You don't have to have this timer for the LCD task, it is just showing
 	//  how to use a timer and how to send messages from that timer.
 
-		//Commented out by Matthew Ibarra 2/2/2013
-		//startTimerForLCD(&vtLCDdata);
+	//Commented out by Matthew Ibarra 2/2/2013
+	//startTimerForLCD(&vtLCDdata);
 	#endif
 	
 	#if USE_MTJ_V4Temp_Sensor == 1
@@ -412,3 +415,4 @@ void vApplicationIdleHook( void )
 	// DO NOT DO THIS... It is not compatible with the debugger: __WFE(); // go into low power until some (not quite sure what...) event occurs
 	vtITMu8(vtITMPortIdle,SCB->SCR+0x10);
 }
+#endif

@@ -1,3 +1,5 @@
+#include "myDefs.h"
+#if MILESTONE_1==1
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -102,4 +104,5 @@ static portTASK_FUNCTION( vConductorUpdateTask, pvParameters )
 
 	}
 }
+#endif
 
